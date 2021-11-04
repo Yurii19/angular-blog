@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { HeadComponent } from './shared/head/head.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AdminComponent
+    AdminComponent,
+    HeadComponent,
   ],
   imports: [
     BrowserModule,
