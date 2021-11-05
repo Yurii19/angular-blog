@@ -1,9 +1,9 @@
 span {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
   padding: 0px 4px 0px 4px;
   border-radius: 3px;
   margin: 0 2px 0 2px;
-  border: 2px solid white;
+  color: white;
   &:hover{
     cursor: pointer;
   }

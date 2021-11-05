@@ -33,7 +33,7 @@ export class BreadcrumbsComponent implements OnInit {
     const urlTree: IRoute[] = [];
     for (let i = paths.length - 1; i >= 0; i--) {
       const path: IRoute = {
-        title: paths[i],
+        title: paths[i]? paths[i]: 'home',
         url: paths.slice(0, i + 1).join('/'),
       };
       urlTree.unshift(path);
