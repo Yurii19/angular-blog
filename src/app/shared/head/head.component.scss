@@ -1,0 +1,21 @@
+.container {
+    background-color: rgb(190, 190, 189);
+   // border: 1px solid black;
+    // border-bottom: 1px solid black;
+}
+ul{
+    display: flex;
+    li{
+        margin-left: 10px;
+        list-style-type: none;
+    }
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    h4{
+        margin: 0;
+        padding: 0;
+    }
+}

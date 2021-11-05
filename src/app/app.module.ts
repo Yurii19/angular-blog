@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HeadComponent } from './shared/head/head.component';
+import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { HeadComponent } from './shared/head/head.component';
     HomeComponent,
     AdminComponent,
     HeadComponent,
+    BreadcrumbsComponent
   ],
   imports: [
     BrowserModule,
