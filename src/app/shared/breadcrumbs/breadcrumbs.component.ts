@@ -29,7 +29,7 @@ export class BreadcrumbsComponent implements OnInit {
 
   makeNavigationTree() {
     const currentUrl = this.router.url;
-    let paths = currentUrl.split('/');
+    const paths = currentUrl.split('/');
     const urlTree: IRoute[] = [];
     for (let i = paths.length - 1; i >= 0; i--) {
       const path: IRoute = {

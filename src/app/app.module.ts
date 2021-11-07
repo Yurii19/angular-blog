@@ -8,19 +8,19 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HeadComponent } from './shared/head/head.component';
 import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AdminComponent,
-    HeadComponent,
-    BreadcrumbsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

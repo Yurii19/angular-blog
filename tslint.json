@@ -1,9 +1,13 @@
-{
-    "defaultSeverity": "error",
+{    "defaultSeverity": "error",
     "extends": [
         "tslint:recommended"
     ],
-    "jsRules": {},
+
+    "linterOptions": {
+        "project": "src/tsconfig.json"
+      },    "jsRules": {},
     "rules": {},
     "rulesDirectory": []
+        
+    
 }
