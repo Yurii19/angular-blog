@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +9,14 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HeadComponent } from './shared/head/head.component';
 import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component';
 import { SharedModule } from './shared/shared.module';
+import { RequestInterceptor } from 'src/services/request.interceptor';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+const INTERCEPTOR_PROVIDER : Provider = {
+  provide : HTTP_INTERCEPTORS,
+  useClass: RequestInterceptor,
+  multi: true
+}
 
 @NgModule({
   declarations: [
@@ -20,9 +28,10 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
