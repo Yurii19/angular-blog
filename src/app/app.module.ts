@@ -6,23 +6,24 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { HeadComponent } from './shared/head/head.component';
-import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component';
+import { SharedModule } from './shared/shared.module';
+import { fakeBackendProvider } from 'src/services/request.interceptor';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AdminComponent,
-    HeadComponent,
-    BreadcrumbsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    SharedModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [fakeBackendProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
