@@ -9,12 +9,14 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { fakeBackendProvider } from 'src/services/request.interceptor';
 import { HttpClientModule } from '@angular/common/http';
+import { RegistrationComponent } from './pages/registration/registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AdminComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
