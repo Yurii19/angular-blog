@@ -10,6 +10,8 @@ import { SharedModule } from './shared/shared.module';
 import { fakeBackendProvider } from 'src/services/request.interceptor';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrationComponent } from './pages/registration/registration.component';
+import { StoreModule } from '@ngrx/store';
+import { registrationReducer } from './store/registration.reducer';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,9 @@ import { RegistrationComponent } from './pages/registration/registration.compone
     RegistrationComponent,
   ],
   imports: [
+    StoreModule.forRoot({
+      registration: registrationReducer
+    }),
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,

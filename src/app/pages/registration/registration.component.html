@@ -10,7 +10,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Choise your education</mat-label>
         <mat-select formControlName="techs" name="food">
-          <mat-option *ngFor="let level of eduction" [value]="level.value">
+          <mat-option *ngFor="let level of education" [value]="level.value">
             {{level.viewValue}}
           </mat-option>
         </mat-select>

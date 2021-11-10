@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { selectOfEducations } from '../pages.selectors';
 
 interface Level {
   value: string;
@@ -11,22 +13,21 @@ interface Level {
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss'],
 })
-
 export class RegistrationComponent implements OnInit {
   applicantForm!: FormGroup;
 
-  eduction: Level[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'},
-  ];
+  education: any = [];
 
-  constructor() {}
+  constructor(private store: Store<any>) {}
 
   ngOnInit(): void {
+    this.store
+      .select(selectOfEducations)
+      .subscribe((data) => (this.education = data));
+
     this.applicantForm = new FormGroup({
       name: new FormControl(''),
-      techs: new FormControl()
+      techs: new FormControl(),
     });
   }
   submit() {
