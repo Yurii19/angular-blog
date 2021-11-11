@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { StoreModule } from '@ngrx/store';
 import { registrationReducer } from './store/registration.reducer';
+import { RegistrationContainerComponent } from './pages/registration-container/registration-container.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { registrationReducer } from './store/registration.reducer';
     HomeComponent,
     AdminComponent,
     RegistrationComponent,
+    RegistrationContainerComponent,
   ],
   imports: [
     StoreModule.forRoot({

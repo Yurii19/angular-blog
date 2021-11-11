@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './pages/admin/admin.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PagesResolver } from './pages/pages.resolver';
+import { RegistrationContainerComponent } from './pages/registration-container/registration-container.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 
 const routes: Routes = [
@@ -10,7 +11,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent },
   {
     path: 'registration',
-    component: RegistrationComponent,
+    component: RegistrationContainerComponent,
     resolve: {
       techs: PagesResolver,
     },

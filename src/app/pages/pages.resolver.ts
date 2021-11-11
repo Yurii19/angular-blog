@@ -14,6 +14,5 @@ export class PagesResolver implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
       return this.registration.getTechs();
-    //throw new Error('Method not implemented.');
   }
 }

@@ -1,12 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { selectOfEducations } from '../pages.selectors';
-
-interface Level {
-  value: string;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-registration',
@@ -14,23 +7,22 @@ interface Level {
   styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent implements OnInit {
+  @Input() techsList = [{ value: 'value', viewValue: 'viewValue' }];
+  @Input() educationsList = [{ value: 'value', viewValue: 'viewValue' }];
+
+  @Output() emitFormData = new EventEmitter();
   applicantForm!: FormGroup;
 
-  education: any = [];
-
-  constructor(private store: Store<any>) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.store
-      .select(selectOfEducations)
-      .subscribe((data) => (this.education = data));
-
     this.applicantForm = new FormGroup({
       name: new FormControl(''),
-      techs: new FormControl(),
+      // techs: new FormControl(),
+      educations : new FormControl()
     });
   }
   submit() {
-    console.log('submit >>> ', this.applicantForm);
+    this.emitFormData.emit(this.applicantForm.value);
   }
 }
