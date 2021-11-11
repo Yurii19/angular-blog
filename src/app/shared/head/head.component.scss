@@ -1,7 +1,5 @@
 .container {
     background-color: rgb(190, 190, 189);
-   // border: 1px solid black;
-    // border-bottom: 1px solid black;
 }
 ul{
     display: flex;
@@ -14,12 +12,18 @@ ul{
 .navigation {
     display: flex;
     align-items: center;
-    .app-name{
-        margin: 0;
-        padding: 0 20px 0 20px;
-    }
+    
 }
 mat-nav-list.list-horizontal {
     display: flex;
     align-items: center;
+}
+.main-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.app-name{
+    margin: 0;
+    padding: 0;
 }

@@ -1,0 +1,21 @@
+<div class="container">
+    <h2>Fill the fields</h2>
+  <form class="form" action="" [formGroup]="applicantForm" (ngSubmit)="submit()">
+   
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>First name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Choise your education</mat-label>
+        <mat-select formControlName="techs" name="food">
+          <mat-option *ngFor="let level of education" [value]="level.value">
+            {{level.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    <button mat-raised-button type="submit" >Send</button>
+  </form>
+</div>
