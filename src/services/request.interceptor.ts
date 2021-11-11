@@ -45,6 +45,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
     function handleRoute() {
       switch (true) {
+        case url.endsWith('/techs') && method === 'GET':
+          return getTechs();
         case url.endsWith('/users/authenticate') && method === 'POST':
           return authenticate();
         case url.endsWith('/users/register') && method === 'POST':
@@ -99,6 +101,13 @@ export class FakeBackendInterceptor implements HttpInterceptor {
      // if (!isLoggedIn()) return unauthorized();
       return ok(users as any);
     }
+
+    function getTechs() {
+      const response = { 1: 'java', 2: '.net', 3: 'Javacript'}
+     // throw new Error('Function not implemented.');
+     return ok(response as any)
+    }
+    
 
     function getUserById() {
       if (!isLoggedIn()) return unauthorized();
@@ -174,3 +183,4 @@ export const fakeBackendProvider = {
   useClass: FakeBackendInterceptor,
   multi: true,
 };
+
