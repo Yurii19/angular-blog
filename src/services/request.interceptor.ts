@@ -19,11 +19,13 @@ let users = [
     lastName: 'user.lastName',
     token: 'fake-jwt-token',
   },
-  {id: 'any',
+  {
+    id: 'any',
     username: 'any',
     firstName: 'any',
     lastName: 'any',
-    token: 'string',}
+    token: 'string',
+  },
 ];
 //let users = JSON.parse(localStorage.getItem('users')) || [];
 
@@ -33,7 +35,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-      console.log('FakeBackendInterceptor >>> ', request)
     const { url, method, headers, body } = request;
 
     // wrap in delayed observable to simulate server api call
@@ -98,16 +99,19 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     }
 
     function getUsers() {
-     // if (!isLoggedIn()) return unauthorized();
+      // if (!isLoggedIn()) return unauthorized();
       return ok(users as any);
     }
-
+    //{ value: 'secondary', viewValue: 'Secondary education' }
     function getTechs() {
-      const response = { 1: 'java', 2: '.net', 3: 'Javacript'}
-     // throw new Error('Function not implemented.');
-     return ok(response as any)
+      const response = [
+        { value: 'java', viewValue: 'Java' },
+        { value: 'c#', viewValue: 'C#' },
+        { value: 'javaScript', viewValue: 'JavaScript' },
+      ];
+      // throw new Error('Function not implemented.');
+      return ok(response as any);
     }
-    
 
     function getUserById() {
       if (!isLoggedIn()) return unauthorized();
@@ -183,4 +187,3 @@ export const fakeBackendProvider = {
   useClass: FakeBackendInterceptor,
   multi: true,
 };
-
