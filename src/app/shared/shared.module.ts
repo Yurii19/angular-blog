@@ -12,9 +12,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
-  declarations: [BreadcrumbsComponent, HeadComponent],
+  declarations: [BreadcrumbsComponent, HeadComponent, SpinnerComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -38,7 +39,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatProgressSpinnerModule,BrowserAnimationsModule
+    MatProgressSpinnerModule,BrowserAnimationsModule, SpinnerComponent
   ],
 })
 export class SharedModule {}
