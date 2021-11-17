@@ -28,7 +28,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatInputModule,
     MatSelectModule,
     MatProgressSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   exports: [
     MatMenuModule,
@@ -39,7 +39,9 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatProgressSpinnerModule,BrowserAnimationsModule, SpinnerComponent
+    MatProgressSpinnerModule,
+    BrowserAnimationsModule,
+    SpinnerComponent,
   ],
 })
 export class SharedModule {}
