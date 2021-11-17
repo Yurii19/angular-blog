@@ -3,8 +3,13 @@
   <form class="form" action="" [formGroup]="applicantForm" (ngSubmit)="submit()">
    
     <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>First name</mat-label>
+        <mat-label> Name</mat-label>
         <input matInput formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
       </mat-form-field>
 
       <mat-form-field appearance="fill">

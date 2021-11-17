@@ -41,11 +41,13 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     return of(null)
       .pipe(mergeMap(handleRoute))
       .pipe(materialize()) // call materialize and dematerialize to ensure delay even if an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)
-      .pipe(delay(500))
+      .pipe(delay(1500))
       .pipe(dematerialize());
 
     function handleRoute() {
       switch (true) {
+        case url.endsWith('/educations') && method === 'GET':
+          return getEducations();
         case url.endsWith('/techs') && method === 'GET':
           return getTechs();
         case url.endsWith('/users/authenticate') && method === 'POST':
@@ -102,7 +104,17 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       // if (!isLoggedIn()) return unauthorized();
       return ok(users as any);
     }
-    //{ value: 'secondary', viewValue: 'Secondary education' }
+
+    function getEducations() {
+      const response = [
+        { value: 'secondary', viewValue: 'Secondary education' },
+        { value: 'professional', viewValue: 'Professional education' },
+        { value: 'higher', viewValue: 'Higher education' },
+      ];
+      // throw new Error('Function not implemented.');
+      return ok(response as any);
+    }
+
     function getTechs() {
       const response = [
         { value: 'java', viewValue: 'Java' },

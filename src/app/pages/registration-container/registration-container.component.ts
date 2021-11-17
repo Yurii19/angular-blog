@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ActionCreatorProps, Store } from '@ngrx/store';
+import { Observable, of } from 'rxjs';
 import { selectOfEducations, selectOfTechs } from '../pages.selectors';
 
 @Component({
@@ -9,31 +10,17 @@ import { selectOfEducations, selectOfTechs } from '../pages.selectors';
   styleUrls: ['./registration-container.component.scss'],
 })
 export class RegistrationContainerComponent implements OnInit {
-  education: any = [];
-  techs: any = [
-    {
-      value: 'value',
-      viewValue: 'viewValue',
-    },
-  ];
+  education$: Observable<any>;
+  techs$: Observable<any>;
 
-  constructor(
-    private store: Store<any>,
-    private route: ActivatedRoute // private router: Router
-  ) {}
+  constructor(private store: Store<any>) {}
 
   ngOnInit(): void {
-    this.store
-      .select(selectOfEducations)
-      .subscribe((data) => (this.education = data));
-
-    this.store.select(selectOfTechs).subscribe((data) => (this.techs = data));
-
-    // let resp = this.route.snapshot.data;
+    this.education$ = this.store.select(selectOfEducations);
+    this.techs$ = this.store.select(selectOfTechs);
   }
 
   handleForm(data: any) {
-   this.store.subscribe(data =>{ console.log(data)})
     console.log('Emmited form >>> ', data);
   }
 }

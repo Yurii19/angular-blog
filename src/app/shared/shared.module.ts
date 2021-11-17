@@ -9,8 +9,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
-
+import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [BreadcrumbsComponent, HeadComponent],
@@ -23,7 +24,10 @@ import {MatSelectModule} from '@angular/material/select';
     MatButtonModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule,MatSelectModule
+    MatInputModule,
+    MatSelectModule,
+    MatProgressSpinnerModule,
+    BrowserAnimationsModule
   ],
   exports: [
     MatMenuModule,
@@ -32,7 +36,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatButtonModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule,MatSelectModule
+    MatInputModule,
+    MatSelectModule,
+    MatProgressSpinnerModule,BrowserAnimationsModule
   ],
 })
 export class SharedModule {}

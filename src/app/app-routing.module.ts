@@ -12,9 +12,7 @@ const routes: Routes = [
   {
     path: 'registration',
     component: RegistrationContainerComponent,
-    resolve: {
-      techs: PagesResolver,
-    },
+    resolve: [PagesResolver]
   },
 ];
 

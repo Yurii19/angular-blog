@@ -13,8 +13,9 @@ import { RegistrationComponent } from './pages/registration/registration.compone
 import { StoreModule } from '@ngrx/store';
 import { registrationReducer } from './store/registration.reducer';
 import { RegistrationContainerComponent } from './pages/registration-container/registration-container.component';
-import { NotificationsEffects } from './store/registration.effect';
+import { TechsEffect } from './store/techs.effect';
 import { EffectsModule } from '@ngrx/effects';
+import { EducationsEffect } from './store/educations.effect';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { EffectsModule } from '@ngrx/effects';
     StoreModule.forRoot({
       registration: registrationReducer
     }),
-    EffectsModule.forRoot([NotificationsEffects]),
+    EffectsModule.forRoot([TechsEffect, EducationsEffect]),
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,

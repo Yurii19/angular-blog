@@ -5,7 +5,7 @@ import { RegistrationService } from 'src/services/registration.service';
 import { GetTechsList, SaveTechsList } from './registration.actions';
 
 @Injectable()
-export class NotificationsEffects {
+export class TechsEffect {
   constructor(
     private actions$: Actions,
     private registration: RegistrationService
@@ -17,7 +17,7 @@ export class NotificationsEffects {
       mergeMap(() =>
         this.registration
           .getTechs()
-          .pipe(map((data) =>  SaveTechsList({ data })))
+          .pipe(map((data) => SaveTechsList({ data })))
       )
     )
   );
