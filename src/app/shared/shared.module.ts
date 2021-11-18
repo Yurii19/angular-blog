@@ -13,9 +13,16 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { TableComponent } from './table/table.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
-  declarations: [BreadcrumbsComponent, HeadComponent, SpinnerComponent],
+  declarations: [
+    BreadcrumbsComponent,
+    HeadComponent,
+    SpinnerComponent,
+    TableComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -29,6 +36,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatSelectModule,
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
+    MatTableModule,
   ],
   exports: [
     MatMenuModule,
@@ -42,6 +50,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
     SpinnerComponent,
+    MatTableModule,TableComponent
   ],
 })
 export class SharedModule {}

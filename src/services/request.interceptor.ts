@@ -46,6 +46,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
     function handleRoute() {
       switch (true) {
+        case url.endsWith('/applicant') && method === 'POST':
+          return addApplicant();
         case url.endsWith('/educations') && method === 'GET':
           return getEducations();
         case url.endsWith('/techs') && method === 'GET':
@@ -103,6 +105,24 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     function getUsers() {
       // if (!isLoggedIn()) return unauthorized();
       return ok(users as any);
+    }
+
+    function addApplicant() {
+      const data = body;
+      const applicants = window.localStorage.getItem('applicants');
+      if (applicants) {
+        //const applicants = window.localStorage.getItem('applicants');
+        const applicantsArray = JSON.parse(applicants);
+
+        window.localStorage.setItem(
+          'applicants',
+          JSON.stringify([...applicantsArray, data])
+        );
+      } else {
+        window.localStorage.setItem('applicants', JSON.stringify([data]));
+      }
+
+      return ok('added' as any);
     }
 
     function getEducations() {
