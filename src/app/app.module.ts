@@ -16,6 +16,7 @@ import { RegistrationContainerComponent } from './pages/registration-container/r
 import { TechsEffect } from './store/techs.effect';
 import { EffectsModule } from '@ngrx/effects';
 import { EducationsEffect } from './store/educations.effect';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -29,12 +30,16 @@ import { EducationsEffect } from './store/educations.effect';
     StoreModule.forRoot({
       registration: registrationReducer
     }),
+    StoreDevtoolsModule.instrument({
+      name: 'Blog',
+     // logOnly: environment.production
+    }),
     EffectsModule.forRoot([TechsEffect, EducationsEffect]),
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,StoreDevtoolsModule
   ],
   providers: [fakeBackendProvider],
   bootstrap: [AppComponent]
