@@ -19,11 +19,13 @@ let users = [
     lastName: 'user.lastName',
     token: 'fake-jwt-token',
   },
-  {id: 'any',
+  {
+    id: 'any',
     username: 'any',
     firstName: 'any',
     lastName: 'any',
-    token: 'string',}
+    token: 'string',
+  },
 ];
 //let users = JSON.parse(localStorage.getItem('users')) || [];
 
@@ -33,18 +35,23 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-      console.log('FakeBackendInterceptor >>> ', request)
     const { url, method, headers, body } = request;
 
     // wrap in delayed observable to simulate server api call
     return of(null)
       .pipe(mergeMap(handleRoute))
       .pipe(materialize()) // call materialize and dematerialize to ensure delay even if an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)
-      .pipe(delay(500))
+      .pipe(delay(1500))
       .pipe(dematerialize());
 
     function handleRoute() {
       switch (true) {
+        case url.endsWith('/applicant') && method === 'POST':
+          return addApplicant();
+        case url.endsWith('/educations') && method === 'GET':
+          return getEducations();
+        case url.endsWith('/techs') && method === 'GET':
+          return getTechs();
         case url.endsWith('/users/authenticate') && method === 'POST':
           return authenticate();
         case url.endsWith('/users/register') && method === 'POST':
@@ -96,8 +103,46 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     }
 
     function getUsers() {
-     // if (!isLoggedIn()) return unauthorized();
+      // if (!isLoggedIn()) return unauthorized();
       return ok(users as any);
+    }
+
+    function addApplicant() {
+      const data = body;
+      const applicants = window.localStorage.getItem('applicants');
+      if (applicants) {
+        //const applicants = window.localStorage.getItem('applicants');
+        const applicantsArray = JSON.parse(applicants);
+
+        window.localStorage.setItem(
+          'applicants',
+          JSON.stringify([...applicantsArray, data])
+        );
+      } else {
+        window.localStorage.setItem('applicants', JSON.stringify([data]));
+      }
+
+      return ok('added' as any);
+    }
+
+    function getEducations() {
+      const response = [
+        { value: 'secondary', viewValue: 'Secondary education' },
+        { value: 'professional', viewValue: 'Professional education' },
+        { value: 'higher', viewValue: 'Higher education' },
+      ];
+      // throw new Error('Function not implemented.');
+      return ok(response as any);
+    }
+
+    function getTechs() {
+      const response = [
+        { value: 'java', viewValue: 'Java' },
+        { value: 'c#', viewValue: 'C#' },
+        { value: 'javaScript', viewValue: 'JavaScript' },
+      ];
+      // throw new Error('Function not implemented.');
+      return ok(response as any);
     }
 
     function getUserById() {

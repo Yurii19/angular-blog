@@ -3,14 +3,28 @@
   <form class="form" action="" [formGroup]="applicantForm" (ngSubmit)="submit()">
    
     <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>First name</mat-label>
+        <mat-label> Name</mat-label>
         <input matInput formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Choise your education</mat-label>
-        <mat-select formControlName="techs" name="food">
-          <mat-option *ngFor="let level of education" [value]="level.value">
+        <mat-select formControlName="educations" >
+          <mat-option *ngFor="let level of educationsList" [value]="level.value">
+            {{level.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Choise your technology</mat-label>
+        <mat-select formControlName="techs">
+          <mat-option *ngFor="let level of techsList" [value]="level.value">
             {{level.viewValue}}
           </mat-option>
         </mat-select>
@@ -18,4 +32,7 @@
 
     <button mat-raised-button type="submit" >Send</button>
   </form>
+
+  <app-table></app-table>
+
 </div>

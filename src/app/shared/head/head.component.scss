@@ -1,29 +1,28 @@
 .container {
-    background-color: rgb(190, 190, 189);
+  background-color: rgb(190, 190, 189);
 }
-ul{
-    display: flex;
-    li{
-        margin-left: 10px;
-        list-style-type: none;
-    }
+ul {
+  display: flex;
+  li {
+    margin-left: 10px;
+    list-style-type: none;
+  }
 }
 
 .navigation {
-    display: flex;
-    align-items: center;
-    
+  display: flex;
+  align-items: center;
 }
 mat-nav-list.list-horizontal {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 .main-row {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
-.app-name{
-    margin: 0;
-    padding: 0;
+.app-name {
+  margin: 0;
+  padding: 0;
 }

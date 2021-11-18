@@ -1,0 +1,5 @@
+<app-registration
+  [educationsList]="education$ | async"
+  [techsList]="techs$ | async"
+  (emitFormData)="handleForm($event)"
+></app-registration>
