@@ -17,6 +17,7 @@ import { TechsEffect } from './store/techs.effect';
 import { EffectsModule } from '@ngrx/effects';
 import { EducationsEffect } from './store/educations.effect';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ApplicantsEffect } from './store/applicants.effect';
 
 @NgModule({
   declarations: [
@@ -28,20 +29,21 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
   ],
   imports: [
     StoreModule.forRoot({
-      registration: registrationReducer
+      registration: registrationReducer,
     }),
     StoreDevtoolsModule.instrument({
       name: 'Blog',
-     // logOnly: environment.production
+      // logOnly: environment.production
     }),
-    EffectsModule.forRoot([TechsEffect, EducationsEffect]),
+    EffectsModule.forRoot([TechsEffect, EducationsEffect, ApplicantsEffect]),
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
     SharedModule,
-    HttpClientModule,StoreDevtoolsModule
+    HttpClientModule,
+    StoreDevtoolsModule,
   ],
   providers: [fakeBackendProvider],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

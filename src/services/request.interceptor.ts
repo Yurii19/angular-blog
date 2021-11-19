@@ -46,6 +46,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
     function handleRoute() {
       switch (true) {
+        case url.endsWith('/applicants') && method === 'GET':
+          return getApplicants();
         case url.endsWith('/applicant') && method === 'POST':
           return addApplicant();
         case url.endsWith('/educations') && method === 'GET':
@@ -105,6 +107,25 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     function getUsers() {
       // if (!isLoggedIn()) return unauthorized();
       return ok(users as any);
+    }
+
+    function getApplicants() {
+      const response = [
+        {
+          name: 'John',
+          email: 'john@.mail.com',
+          education: 'Higher',
+          technology: 'Java',
+        },
+        {
+          name: 'Yurii',
+          email: 'yurii@.mail.com',
+          education: 'Higher',
+          technology: 'JavaScript',
+        },
+      ]
+      // throw new Error('Function not implemented.');
+      return ok(response as any);
     }
 
     function addApplicant() {
