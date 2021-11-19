@@ -7,12 +7,12 @@ import { Injectable } from '@angular/core';
 export class RegistrationService {
   constructor(private http: HttpClient) {}
 
-  saveApplicant(){
-    return this.http.post('http://localhost:4200/techs',{})
+  saveApplicant(data: any) {
+    return this.http.post('http://localhost:4200/applicant', data);
   }
 
-  getApplicants(){
-    return this.http.get('http://localhost:4200/applicants')
+  getApplicants() {
+    return this.http.get('http://localhost:4200/applicants');
   }
 
   getTechs() {
@@ -22,5 +22,4 @@ export class RegistrationService {
   getEducations() {
     return this.http.get('http://localhost:4200/educations');
   }
-
 }

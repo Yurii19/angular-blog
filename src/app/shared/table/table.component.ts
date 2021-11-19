@@ -22,8 +22,6 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(GetApplicants())
     this.applicantsData$ = this.store.select(selectOfApplicants)
-   // this.applicantsData$ = this.registration.getApplicants();
-   // this.applicantsData$.subscribe(d => console.log(d))
   }
 
 }

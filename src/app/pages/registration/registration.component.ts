@@ -19,8 +19,8 @@ export class RegistrationComponent implements OnInit {
     this.applicantForm = new FormGroup({
       name: new FormControl(''),
       email: new FormControl(),
-      techs: new FormControl(),
-      educations: new FormControl(),
+      technology: new FormControl(),
+      education: new FormControl(),
     });
   }
   submit() {

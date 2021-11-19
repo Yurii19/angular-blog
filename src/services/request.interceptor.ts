@@ -9,6 +9,7 @@ import {
 } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
+import { JsonFormatter } from 'tslint/lib/formatters';
 
 // array in local storage for registered users
 let users = [
@@ -110,25 +111,26 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     }
 
     function getApplicants() {
-      const response = [
+      const initApplicantsList = [
         {
-          name: 'John',
-          email: 'john@.mail.com',
-          education: 'Higher',
-          technology: 'Java',
+          name: '_',
+          email: '_',
+          education: '_',
+          technology: '_',
         },
-        {
-          name: 'Yurii',
-          email: 'yurii@.mail.com',
-          education: 'Higher',
-          technology: 'JavaScript',
-        },
-      ]
+      ];
+
+      const applicants = window.localStorage.getItem('applicants');
+      if (applicants) {
+        return ok(JSON.parse(applicants) as any);
+      }
+
       // throw new Error('Function not implemented.');
-      return ok(response as any);
+      return ok(initApplicantsList as any);
     }
 
     function addApplicant() {
+      console.log('addApplicant',body)
       const data = body;
       const applicants = window.localStorage.getItem('applicants');
       if (applicants) {
