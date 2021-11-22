@@ -4,10 +4,10 @@ export const initialState: any = {
   loadingStatus: false,
   applicantsList: [
     {
-      name: '...',
-      email: '...',
-      education: '...',
-      technology: '...',
+      name: '. . .',
+      email: '. . .',
+      education: '. . .',
+      technology: '. . .',
     },
   ],
 };

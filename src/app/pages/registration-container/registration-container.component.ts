@@ -26,6 +26,7 @@ export class RegistrationContainerComponent implements OnInit {
   }
 
   handleForm(data: any) {
-    this.registration.saveApplicant(data).subscribe(data => this.store.dispatch(GetApplicants()));
+    this.registration.saveApplicant(data);
+
   }
 }
