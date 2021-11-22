@@ -14,9 +14,11 @@ export const initialState: any = {
 
 export function registrationReducer(state: any = initialState, action: any) {
   switch (action.type) {
+    case 'addApplicant':
+      return {...state, loadingStatus: true}
     case 'saveApplicants':
       return { ...state, applicantsList: action.data, loadingStatus: false };
-    case 'getApplicants':
+    case 'requestApplicants':
       return {...state, loadingStatus: true}
     case 'saveEducationList':
       return { ...state, educationLevels: action.data, loadingStatus: false };

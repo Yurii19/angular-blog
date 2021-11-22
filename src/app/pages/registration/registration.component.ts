@@ -10,7 +10,7 @@ export class RegistrationComponent implements OnInit {
   @Input() techsList = [{ value: 'value', viewValue: 'viewValue' }];
   @Input() educationsList = [{ value: 'value', viewValue: 'viewValue' }];
 
-  @Output() emitFormData = new EventEmitter();
+  @Output() sendFormData = new EventEmitter();
   applicantForm!: FormGroup;
 
   constructor() {}
@@ -24,6 +24,6 @@ export class RegistrationComponent implements OnInit {
     });
   }
   submit() {
-    this.emitFormData.emit(this.applicantForm.value);
+    this.sendFormData.emit(this.applicantForm.value);
   }
 }

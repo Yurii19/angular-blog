@@ -13,22 +13,11 @@ export class ApplicantsEffect {
 
   init$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(GetApplicants),
+      ofType(AddApplicant),
       mergeMap(() =>
         this.registration
           .getApplicants()
           .pipe(map((data) => SaveApplicants({ data })))
-      )
-    )
-  );
-
-  addApplicant$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(AddApplicant),
-      mergeMap(({type, data}) =>
-        this.registration
-          .saveApplicant(data)
-          .pipe(map((data) => SaveApplicants({ data }))),
       )
     )
   );
