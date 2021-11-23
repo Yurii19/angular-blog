@@ -7,19 +7,18 @@ import {
 } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { selectOfApplicants } from '../app/store/registration.selectors';
-import { take, tap } from 'rxjs/operators';
+import { filter, map, take, tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class ApplicantsResolver implements Resolve<any> {
   constructor(private store: Store) {}
-
+  // this.store.dispatch(RequestApplicants())
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const result$ = this.store.select(selectOfApplicants).pipe(
-      tap((resp) => {
-        if (resp.length > 0) {
-          this.store.dispatch(RequestApplicants());
-        }
+      tap((data) => {
+        this.store.dispatch(RequestApplicants());
       }),
+      filter(data => data.length),
       take(1)
     );
     return result$;
