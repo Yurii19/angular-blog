@@ -11,6 +11,7 @@ export const selectOfTechs = createSelector(
   selecRegistration,
   (state: any) => state.techsList
 );
+
 export const selectOfApplicants = createSelector(
   selecRegistration,
   (state: any) => state.applicantsList
