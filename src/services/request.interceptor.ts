@@ -130,7 +130,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     }
 
     function addApplicant() {
-      console.log('addApplicant',body)
       const data = body;
       const applicants = window.localStorage.getItem('applicants');
       if (applicants) {
