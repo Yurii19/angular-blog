@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { PagesResolver } from '../services/pages.resolver';
 import { RegistrationContainerComponent } from './pages/registration-container/registration-container.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
+import { ApplicantsResolver } from 'src/services/applicants.resolver';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,7 +13,7 @@ const routes: Routes = [
   {
     path: 'registration',
     component: RegistrationContainerComponent,
-    resolve: [PagesResolver]
+    resolve: [PagesResolver, ApplicantsResolver]
   },
 ];
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, mergeMap } from 'rxjs/operators';
 import { RegistrationService } from 'src/services/registration.service';
-import { AddApplicant, GetApplicants, SaveApplicants } from './registration.actions';
+import { AddApplicant, RequestApplicants, SaveApplicants } from './registration.actions';
 
 @Injectable()
 export class ApplicantsEffect {
@@ -13,7 +13,7 @@ export class ApplicantsEffect {
 
   init$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(GetApplicants),
+      ofType(RequestApplicants),
       mergeMap(() =>
         this.registration
           .getApplicants()

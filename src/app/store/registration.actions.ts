@@ -9,7 +9,7 @@ export const AddApplicant = createAction(
   props<{ data: any }>()
 );
 
-export const GetApplicants = createAction('requestApplicants');
+export const RequestApplicants = createAction('requestApplicants');
 
 export const SaveApplicants = createAction(
   'saveApplicants',
