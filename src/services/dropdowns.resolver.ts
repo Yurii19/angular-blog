@@ -10,7 +10,7 @@ import {
 } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { RegistrationService } from 'src/services/registration.service';
-import { selectOfEducations, selectOfTechs } from '../app/store/pages.selectors';
+import { selectOfEducations, selectOfTechs } from '../app/store/registration.selectors';
 import { filter, take, tap } from 'rxjs/operators';
 import { merge } from 'rxjs';
 

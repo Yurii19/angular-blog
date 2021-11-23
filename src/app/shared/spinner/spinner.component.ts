@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { createSelector, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { selectPreloader } from 'src/app/store/registration.selectors';
 
 @Component({
   selector: 'app-spinner',
@@ -12,12 +13,6 @@ export class SpinnerComponent implements OnInit {
   constructor(private store: Store<any>) {}
 
   ngOnInit(): void {
-    const selecRegistration = (state: any) => state.registration;
-    const selectPreloader = createSelector(
-      selecRegistration,
-      (state: any) => state.loadingStatus
-    );
-
     this.preloader$ = this.store.select(selectPreloader);
   }
 }

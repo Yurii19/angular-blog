@@ -8,7 +8,7 @@ import {
   SaveApplicants,
 } from 'src/app/store/registration.actions';
 import { RegistrationService } from 'src/services/registration.service';
-import { selectOfEducations, selectOfTechs } from '../../store/pages.selectors';
+import { selectOfEducations, selectOfTechs } from '../../store/registration.selectors';
 
 @Component({
   selector: 'app-registration-container',
