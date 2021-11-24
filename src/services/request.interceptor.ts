@@ -130,7 +130,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     }
 
     function addApplicant() {
-      console.log('addApplicant',body)
       const data = body;
       const applicants = window.localStorage.getItem('applicants');
       if (applicants) {
@@ -145,7 +144,13 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         window.localStorage.setItem('applicants', JSON.stringify([data]));
       }
 
-      return ok('added' as any);
+      const response = window.localStorage.getItem('applicants');
+      if (response) {
+        return ok(JSON.parse(response) as any);
+      }
+      
+
+      return ok(response as any);
     }
 
     function getEducations() {

@@ -1,9 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { selectOfApplicants } from 'src/app/store/pages.selectors';
-import { GetApplicants } from 'src/app/store/registration.actions';
+import { selectOfApplicants } from 'src/app/store/registration.selectors';
 import { RegistrationService } from 'src/services/registration.service';
 
 @Component({
@@ -20,7 +18,7 @@ export class TableComponent implements OnInit {
   constructor(private store: Store<any>,private registration: RegistrationService) { }
 
   ngOnInit(): void {
-    this.store.dispatch(GetApplicants())
+    //this.store.dispatch(RequestApplicants())
     this.applicantsData$ = this.store.select(selectOfApplicants)
   }
 

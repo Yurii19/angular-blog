@@ -2,9 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ActionCreatorProps, Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { GetApplicants } from 'src/app/store/registration.actions';
+import {
+  AddApplicant,
+  RequestApplicants,
+  SaveApplicants,
+} from 'src/app/store/registration.actions';
 import { RegistrationService } from 'src/services/registration.service';
-import { selectOfEducations, selectOfTechs } from '../../store/pages.selectors';
+import { selectOfEducations, selectOfTechs } from '../../store/registration.selectors';
 
 @Component({
   selector: 'app-registration-container',
@@ -26,6 +30,6 @@ export class RegistrationContainerComponent implements OnInit {
   }
 
   handleForm(data: any) {
-    this.registration.saveApplicant(data).subscribe(data => this.store.dispatch(GetApplicants()));
+    this.store.dispatch(AddApplicant({ data }));
   }
 }

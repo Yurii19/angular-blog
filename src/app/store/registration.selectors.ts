@@ -16,3 +16,8 @@ export const selectOfApplicants = createSelector(
   selecRegistration,
   (state: any) => state.applicantsList
 );
+
+export const selectPreloader = createSelector(
+  selecRegistration,
+  (state: any) => state.loadingStatus
+);

@@ -13,11 +13,9 @@ import { RegistrationComponent } from './pages/registration/registration.compone
 import { StoreModule } from '@ngrx/store';
 import { registrationReducer } from './store/registration.reducer';
 import { RegistrationContainerComponent } from './pages/registration-container/registration-container.component';
-import { TechsEffect } from './store/techs.effect';
 import { EffectsModule } from '@ngrx/effects';
-import { EducationsEffect } from './store/educations.effect';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { ApplicantsEffect } from './store/applicants.effect';
+import { RegistrationEffect } from './store/registration.effect';
 
 @NgModule({
   declarations: [
@@ -35,7 +33,7 @@ import { ApplicantsEffect } from './store/applicants.effect';
       name: 'Blog',
       // logOnly: environment.production
     }),
-    EffectsModule.forRoot([TechsEffect, EducationsEffect, ApplicantsEffect]),
+    EffectsModule.forRoot([RegistrationEffect]),
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,

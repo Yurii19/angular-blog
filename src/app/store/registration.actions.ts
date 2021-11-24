@@ -4,7 +4,12 @@ interface Action {
   type: string;
 }
 
-export const GetApplicants = createAction('getApplicants');
+export const AddApplicant = createAction(
+  'addApplicant',
+  props<{ data: any }>()
+);
+
+export const RequestApplicants = createAction('requestApplicants');
 
 export const SaveApplicants = createAction(
   'saveApplicants',

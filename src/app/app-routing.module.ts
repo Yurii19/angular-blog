@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './pages/admin/admin.component';
 import { HomeComponent } from './pages/home/home.component';
-import { PagesResolver } from './pages/pages.resolver';
+import { PagesResolver } from '../services/dropdowns.resolver';
 import { RegistrationContainerComponent } from './pages/registration-container/registration-container.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
+import { ApplicantsResolver } from 'src/services/applicants.resolver';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,7 +13,7 @@ const routes: Routes = [
   {
     path: 'registration',
     component: RegistrationContainerComponent,
-    resolve: [PagesResolver]
+    resolve: [PagesResolver, ApplicantsResolver]
   },
 ];
 

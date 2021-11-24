@@ -2,22 +2,17 @@ export const initialState: any = {
   educationLevels: [],
   techsList: [],
   loadingStatus: false,
-  applicantsList: [
-    {
-      name: '...',
-      email: '...',
-      education: '...',
-      technology: '...',
-    },
-  ],
+  applicantsList: [],
 };
 
 export function registrationReducer(state: any = initialState, action: any) {
   switch (action.type) {
+    case 'addApplicant':
+      return { ...state, loadingStatus: true };
     case 'saveApplicants':
       return { ...state, applicantsList: action.data, loadingStatus: false };
-    case 'getApplicants':
-      return {...state, loadingStatus: true}
+    case 'requestApplicants':
+      return { ...state, loadingStatus: true };
     case 'saveEducationList':
       return { ...state, educationLevels: action.data, loadingStatus: false };
     case 'getEducationList':
