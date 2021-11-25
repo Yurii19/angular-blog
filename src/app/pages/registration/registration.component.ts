@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { RegistrationValidators } from 'src/registration.validators';
 
 @Component({
   selector: 'app-registration',
@@ -16,14 +17,21 @@ export class RegistrationComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    
     this.applicantForm = new FormGroup({
-      name: new FormControl(''),
-      email: new FormControl(),
-      technology: new FormControl(),
-      education: new FormControl(),
+      name: new FormControl('', [Validators.required, RegistrationValidators.checkName, Validators.pattern(/^[a-zA-Z]+-?[a-zA-Z]+$/)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      technology: new FormControl('', [Validators.required]),
+      education: new FormControl('', [Validators.required]),
     });
+    
   }
   submit() {
-    this.sendFormData.emit(this.applicantForm.value);
+    if (this.applicantForm.valid) {
+      this.sendFormData.emit(this.applicantForm.value);
+      this.applicantForm.reset();
+      this.applicantForm.markAsUntouched()
+      this.applicantForm.markAsPristine();
+    }
   }
 }
