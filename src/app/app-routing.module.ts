@@ -6,14 +6,21 @@ import { PagesResolver } from '../services/dropdowns.resolver';
 import { RegistrationContainerComponent } from './pages/registration-container/registration-container.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { ApplicantsResolver } from 'src/services/applicants.resolver';
+import { SandboxesComponent } from './features/sandboxes/sandboxes.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'admin', component: AdminComponent },
+  {
+    path: '',
+    component: HomeComponent,
+    //children: [{ path: 'sandboxes', component: SandboxesComponent }],
+  },
+  { path: 'admin', component: AdminComponent ,
+  children: [{ path: 'sandboxes', component: SandboxesComponent }],
+},
   {
     path: 'registration',
     component: RegistrationContainerComponent,
-    resolve: [PagesResolver, ApplicantsResolver]
+    resolve: [PagesResolver, ApplicantsResolver],
   },
 ];
 

@@ -30,8 +30,10 @@ export class RegistrationComponent implements OnInit {
     if (this.applicantForm.valid) {
       this.sendFormData.emit(this.applicantForm.value);
       this.applicantForm.reset();
-      this.applicantForm.markAsUntouched()
-      this.applicantForm.markAsPristine();
+      const inputs = Object.keys(this.applicantForm.controls) ;
+      for (const key of inputs) {
+        this.applicantForm.controls[key].setErrors(null);
+      }
     }
   }
 }
