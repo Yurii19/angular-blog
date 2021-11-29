@@ -16,6 +16,7 @@ import { RegistrationContainerComponent } from './pages/registration-container/r
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { RegistrationEffect } from './store/registration.effect';
+import { SandboxesComponent } from './features/sandboxes/sandboxes.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { RegistrationEffect } from './store/registration.effect';
     AdminComponent,
     RegistrationComponent,
     RegistrationContainerComponent,
+    SandboxesComponent,
   ],
   imports: [
     StoreModule.forRoot({
