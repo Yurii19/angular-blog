@@ -1,3 +1,4 @@
 <p>home works!</p>
 <button (click)="getUsers()">Request</button>
-<a routerLink="['/', 'sandboxes']">Sandboxes</a>
+<a [routerLink]="['/home', 'sandboxes']">Sandboxes</a>
+<router-outlet></router-outlet>

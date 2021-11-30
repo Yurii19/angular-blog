@@ -11,12 +11,19 @@ import { SandboxesComponent } from './features/sandboxes/sandboxes.component';
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
-    //children: [{ path: 'sandboxes', component: SandboxesComponent }],
+    redirectTo: 'home', pathMatch: 'full'
+   // children: [{ path: 'sandboxes', component: SandboxesComponent }],
   },
-  { path: 'admin', component: AdminComponent ,
-  children: [{ path: 'sandboxes', component: SandboxesComponent }],
-},
+  {
+    path: 'home',
+    component: HomeComponent,
+    children: [{ path: 'sandboxes', component: SandboxesComponent }],
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+   // children: [{ path: 'sandboxes', component: SandboxesComponent }],
+  },
   {
     path: 'registration',
     component: RegistrationContainerComponent,
